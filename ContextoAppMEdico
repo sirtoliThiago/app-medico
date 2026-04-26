@@ -38,3 +38,18 @@ crie o planejamento do projeto onde possa ver as funcionalidades em um mapa do s
 - Botão Compartilhar: Implementar a Web Share API nativa do celular.
 - SEO: Adicionar meta tags de Open Graph e descrição para melhorar rastreamento e compartilhamento.
 - Navegação Inferior: Adicionar barra de navegação fixa na parte de baixo (padrão de app mobile).
+
+# FASE 8: CORREÇÃO DE LINKS DE VÍDEOS
+- Problema: Todos os vídeos estavam indisponíveis porque os IDs do YouTube eram inválidos ou tinham embedding bloqueado.
+- Solução: Pesquisar manualmente vídeos reais e válidos no YouTube para cada tema (Heimlich, Queimadura, Febre, RCP, Convulsão, Chá Ansiedade) e substituir todos os IDs no data.js.
+
+# FASE 9: FALLBACK DE VÍDEO
+- Problema: Mesmo com IDs válidos, o YouTube pode bloquear embedding em alguns vídeos dependendo da configuração do canal.
+- Solução: Adicionar um botão "Assistir no YouTube" sempre visível abaixo do player, que abre o vídeo diretamente no app do YouTube como fallback garantido.
+
+# FASE 10: REDESIGN CALMANTE — ANIMAÇÕES E BACKGROUND
+- Objetivo: Transformar o visual do app para transmitir calma, segurança e bem-estar — sensações essenciais num app de saúde.
+- Backgrounds: Usar imagens de fundo suaves e naturais (céu azul, natureza pastel) com overlay gradiente para garantir legibilidade.
+- Animações: Implementar animações sutis — orbs flutuantes no background, pulsação no botão de emergência e fade-in suave nas telas.
+- Glassmorphism: Reintroduzir efeito vidro nos cards (blur + transparência) sobre os fundos coloridos.
+- Tipografia e Espaçamento: Aumentar respiro entre elementos, usar tamanhos maiores para o cabeçalho principal.

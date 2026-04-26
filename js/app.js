@@ -29,54 +29,79 @@ function cardHtml(vid) {
 // --- Views ---
 function renderHome() {
     const categoriesHtml = db.categories.map(cat => `
-        <div onclick="router.navigate('category', '${cat.id}')" class="clean-card p-4 flex flex-col items-center justify-center gap-2 cursor-pointer hover:shadow-md transition-shadow">
-            <div class="${cat.color} p-3 rounded-full">
+        <div onclick="router.navigate('category', '${cat.id}')"
+            class="clean-card cat-card slide-up p-4 flex flex-col items-center justify-center gap-2 cursor-pointer">
+            <div class="${cat.color} p-3 rounded-2xl shadow-sm">
                 <i class="ph ${cat.icon} text-3xl"></i>
             </div>
-            <span class="text-sm font-semibold text-center text-slate-800 dark:text-slate-200">${cat.title}</span>
+            <span class="text-sm font-semibold text-center text-slate-700 dark:text-slate-200 leading-tight">${cat.title}</span>
         </div>
     `).join('');
 
     const allItemsHtml = db.videos.map(vid => cardHtml(vid)).join('');
 
     appContent.innerHTML = `
-        <div class="fade-in px-4 pt-4 pb-28">
-            <button onclick="window.location.href='tel:192'" class="clean-danger w-full text-white font-bold text-lg rounded-2xl p-4 flex items-center justify-center gap-3 mb-6 active:scale-95 transition-transform">
-                <i class="ph-fill ph-phone-call text-3xl animate-pulse"></i>
-                EMERGÊNCIA: LIGAR 192
-            </button>
+        <div class="fade-in pb-28">
 
-            <!-- Busca Funcional -->
-            <div class="relative mb-6">
-                <i class="ph ph-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl"></i>
-                <input id="searchInput" type="text" placeholder="Buscar: febre, corte, convulsão..."
-                    class="w-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-full py-3 pl-12 pr-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-slate-700 dark:text-slate-200">
+            <!-- HERO SECTION com imagem de fundo calmante -->
+            <div class="hero-section">
+                <img src="assets/images/hero_bg.png" alt="Fundo tranquilo" class="hero-bg">
+                <div class="hero-overlay"></div>
+                <div class="hero-content flex flex-col items-center text-center gap-4">
+                    <!-- Anel de Respiração -->
+                    <div class="breathe-ring mb-1">
+                        <div class="bg-white/25 rounded-full p-4">
+                            <i class="ph-fill ph-heartbeat text-4xl text-white drop-shadow-lg"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-white drop-shadow-md">Cuidando de você</h2>
+                        <p class="text-sm text-white/80 mt-1">Informações médicas rápidas e confiáveis</p>
+                    </div>
+                    <!-- Botão de Emergência -->
+                    <button onclick="window.location.href='tel:192'"
+                        class="clean-danger w-full text-white font-bold text-base rounded-2xl p-4 flex items-center justify-center gap-3 active:scale-95 transition-transform mt-1">
+                        <i class="ph-fill ph-phone-call text-2xl animate-pulse"></i>
+                        EMERGÊNCIA — LIGAR 192
+                    </button>
+                </div>
             </div>
 
-            <!-- Resultado da Busca (oculto por padrão) -->
-            <div id="searchResults" class="hidden mb-6">
+            <!-- Busca Funcional -->
+            <div class="relative mb-6 px-4">
+                <i class="ph ph-magnifying-glass absolute left-8 top-1/2 -translate-y-1/2 text-slate-400 text-xl"></i>
+                <input id="searchInput" type="text" placeholder="Buscar: febre, corte, convulsão..."
+                    class="w-full bg-white/70 dark:bg-slate-800/70 backdrop-blur border border-white/80 dark:border-slate-700 rounded-full py-3 pl-12 pr-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/50 text-slate-700 dark:text-slate-200 transition-all">
+            </div>
+
+            <!-- Resultado da Busca -->
+            <div id="searchResults" class="hidden mb-6 px-4">
                 <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Resultados da busca</h2>
                 <div id="searchList"></div>
             </div>
 
-            <!-- Conteúdo normal (oculto quando buscando) -->
+            <!-- Conteúdo principal -->
             <div id="mainContent">
-                <div class="mb-6">
-                    <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Navegar por Temas</h2>
-                    <div class="grid grid-cols-2 gap-4">${categoriesHtml}</div>
+                <!-- Categorias -->
+                <div class="mb-6 px-4">
+                    <h2 class="text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Navegar por Temas</h2>
+                    <div class="grid grid-cols-2 gap-3">${categoriesHtml}</div>
                 </div>
 
-                <div class="ad-placeholder">Espaço para Anúncio (AdSense)</div>
+                <div class="px-4">
+                    <div class="ad-placeholder">📢 Espaço para Anúncio</div>
+                </div>
 
-                <div class="mt-6">
-                    <h2 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Todos os conteúdos</h2>
+                <!-- Todos os conteúdos -->
+                <div class="mt-4 px-4">
+                    <h2 class="text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Todos os Conteúdos</h2>
                     <div>${allItemsHtml}</div>
                 </div>
             </div>
         </div>
     `;
 
-    // Lógica de busca funcional
+    // Busca funcional
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
     const searchList = document.getElementById('searchList');
@@ -91,8 +116,7 @@ function renderHome() {
         }
         const filtered = db.videos.filter(v =>
             v.title.toLowerCase().includes(query) ||
-            v.description.toLowerCase().includes(query) ||
-            v.categoryId.toLowerCase().includes(query)
+            v.description.toLowerCase().includes(query)
         );
         mainContent.classList.add('hidden');
         searchResults.classList.remove('hidden');
@@ -103,6 +127,7 @@ function renderHome() {
         }
     });
 }
+
 
 function renderPlayer(videoId) {
     const vid = db.videos.find(v => v.id === videoId);
