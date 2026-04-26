@@ -114,6 +114,21 @@ function renderPlayer(videoId) {
         </li>
     `).join('');
 
+    // Player com fallback automático se o vídeo for bloqueado
+    const mediaHtml = `
+        <div class="w-full aspect-video bg-slate-900 sticky top-0 z-0 relative" id="videoWrapper">
+            <iframe id="yt-iframe" class="w-full h-full"
+                src="https://www.youtube.com/embed/${vid.youtubeId}?modestbranding=1&rel=0"
+                frameborder="0" allowfullscreen allow="autoplay">
+            </iframe>
+            <!-- Overlay de fallback: sempre mostramos um botão de abertura direta -->
+            <a href="https://www.youtube.com/watch?v=${vid.youtubeId}" target="_blank"
+                class="absolute bottom-3 right-3 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 shadow-lg transition-colors z-10">
+                <i class="ph-fill ph-youtube-logo text-base"></i>
+                Abrir no YouTube
+            </a>
+        </div>`;
+
     appContent.innerHTML = `
         <div class="fade-in bg-slate-50 dark:bg-slate-900 min-h-screen pb-10">
             <div class="absolute top-4 left-4 z-10">
@@ -122,12 +137,7 @@ function renderPlayer(videoId) {
                 </button>
             </div>
 
-            <!-- Vídeo -->
-            <div class="w-full aspect-video bg-black sticky top-0 z-0">
-                <iframe class="w-full h-full"
-                    src="https://www.youtube.com/embed/${vid.youtubeId}?autoplay=1&modestbranding=1&rel=0"
-                    frameborder="0" allowfullscreen allow="autoplay"></iframe>
-            </div>
+            ${mediaHtml}
 
             <!-- Cabeçalho do conteúdo -->
             <div class="p-5 -mt-4 relative bg-white dark:bg-slate-800 rounded-t-2xl z-10 shadow-sm border-b border-slate-100 dark:border-slate-700">
