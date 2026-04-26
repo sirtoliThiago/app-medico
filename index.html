@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppMedico - Auxílio Básico e Rápido</title>
+    <title>AppMedico - Auxílio Médico Básico e Rápido</title>
+
+    <!-- SEO e Open Graph -->
+    <meta name="description" content="AppMedico: Primeiros socorros, febre, saúde infantil, medicina natural e muito mais. Informações médicas básicas e gratuitas para todos.">
+    <meta name="keywords" content="primeiros socorros, febre, engasgo, heimlich, saúde, medicina, emergência, brasil">
+    <meta name="author" content="AppMedico">
+    <meta property="og:title" content="AppMedico - Auxílio Médico Básico e Rápido">
+    <meta property="og:description" content="Guias práticos de primeiros socorros, febre, saúde infantil e medicina natural. Gratuito e acessível para todos.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sirtoliThiago.github.io/app-medico/">
+    <meta name="twitter:card" content="summary_large_image">
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Phosphor Icons -->
@@ -11,7 +22,7 @@
     <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
-            darkMode: 'class', // Ativa o modo escuro por classe
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -28,14 +39,17 @@
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- PWA Meta tags básicos -->
+
+    <!-- PWA -->
     <meta name="theme-color" content="#0ea5e9">
     <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="AppMedico">
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col transition-colors duration-300">
+
     <!-- Header -->
     <header class="clean-header sticky top-0 z-50 px-4 py-3 flex justify-between items-center">
         <div class="flex items-center gap-2 cursor-pointer" onclick="router.navigate('home')">
@@ -45,31 +59,54 @@
             <h1 class="text-xl font-bold text-slate-800 dark:text-white tracking-tight">App<span class="text-primary">Medico</span></h1>
         </div>
         <div class="flex items-center gap-3">
-            <button id="darkModeToggle" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors p-2 bg-slate-100 dark:bg-slate-800 rounded-full">
+            <button id="darkModeToggle" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors p-2 bg-slate-100 dark:bg-slate-800 rounded-full" aria-label="Alternar modo escuro">
                 <i class="ph-fill ph-moon text-xl" id="darkModeIcon"></i>
-            </button>
-            <button class="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
-                <i class="ph ph-list text-3xl"></i>
             </button>
         </div>
     </header>
 
-    <!-- Main Content Container (Dynamic Route Rendering) -->
+    <!-- Main Content -->
     <main id="app-content" class="flex-grow w-full max-w-3xl mx-auto pb-20 relative">
         <!-- Renderizado via app.js -->
     </main>
 
+    <!-- Barra de Navegação Inferior (padrão app mobile) -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 flex justify-around items-center py-2 px-4 max-w-3xl mx-auto">
+        <button class="bottom-nav-btn flex flex-col items-center gap-1 text-primary" data-route="home">
+            <i class="ph-fill ph-house text-2xl"></i>
+            <span class="text-xs font-medium">Início</span>
+        </button>
+        <button class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" data-route="search">
+            <i class="ph ph-magnifying-glass text-2xl"></i>
+            <span class="text-xs font-medium">Buscar</span>
+        </button>
+        <a href="tel:192" class="flex flex-col items-center gap-1">
+            <div class="bg-red-500 text-white rounded-full p-3 -mt-6 shadow-lg">
+                <i class="ph-fill ph-phone-call text-2xl"></i>
+            </div>
+            <span class="text-xs font-medium text-red-500 mt-1">192</span>
+        </a>
+        <button class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" data-route="category/primeiros-socorros">
+            <i class="ph ph-first-aid text-2xl"></i>
+            <span class="text-xs font-medium">Socorros</span>
+        </button>
+        <button class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" data-route="category/medicina-alternativa">
+            <i class="ph ph-leaf text-2xl"></i>
+            <span class="text-xs font-medium">Natural</span>
+        </button>
+    </nav>
+
     <!-- App Scripts -->
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
-    
-    <!-- PWA Service Worker Registration -->
+
+    <!-- PWA Service Worker -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('Service Worker Registrado com sucesso!', reg.scope))
-                    .catch(err => console.error('Erro ao registrar Service Worker', err));
+                    .then(reg => console.log('SW registrado:', reg.scope))
+                    .catch(err => console.error('SW erro:', err));
             });
         }
     </script>

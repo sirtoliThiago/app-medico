@@ -17,10 +17,19 @@
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
     transition: transform 0.2s, box-shadow 0.2s;
 }
+.clean-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+}
 .dark .clean-card {
     background: #1e293b;
     border-color: #334155;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+/* Bottom Nav safe area para iPhone */
+nav.fixed.bottom-0 {
+    padding-bottom: env(safe-area-inset-bottom, 8px);
 }
 
 .clean-danger {
