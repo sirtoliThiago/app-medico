@@ -43,9 +43,9 @@ function renderHome() {
     appContent.innerHTML = `
         <div class="fade-in pb-28">
 
-            <!-- HERO SECTION com imagem de fundo calmante -->
+            <!-- HERO SECTION com imagem animada de saúde (Ken Burns) -->
             <div class="hero-section">
-                <img src="assets/images/hero_bg.png" alt="Fundo tranquilo" class="hero-bg">
+                <img src="assets/images/health_hero_bg.png" alt="Saúde e Bem-estar" class="hero-bg hero-ken-burns">
                 <div class="hero-overlay"></div>
                 <div class="hero-content flex flex-col items-center text-center gap-4">
                     <!-- Anel de Respiração -->
@@ -85,7 +85,7 @@ function renderHome() {
                 <!-- Categorias -->
                 <div class="mb-6 px-4">
                     <h2 class="text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Navegar por Temas</h2>
-                    <div class="grid grid-cols-2 gap-3">${categoriesHtml}</div>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">${categoriesHtml}</div>
                 </div>
 
                 <div class="px-4">

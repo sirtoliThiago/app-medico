@@ -53,3 +53,9 @@ crie o planejamento do projeto onde possa ver as funcionalidades em um mapa do s
 - Animações: Implementar animações sutis — orbs flutuantes no background, pulsação no botão de emergência e fade-in suave nas telas.
 - Glassmorphism: Reintroduzir efeito vidro nos cards (blur + transparência) sobre os fundos coloridos.
 - Tipografia e Espaçamento: Aumentar respiro entre elementos, usar tamanhos maiores para o cabeçalho principal.
+
+# FASE 11: EXPANSÃO MASSIVA DE CONTEÚDO E BACKGROUND ANIMADO
+- Novas Categorias: Saúde Mental, Nutrição e Bem-estar, Doenças Comuns.
+- Novos Temas (9+): Respiração 4-7-8, Ataque de Pânico, Hidratação, Alimentos Imunidade, Gripe vs Resfriado, Dor nas Costas, Pressão Alta, Diabetes/Hipoglicemia, Alergia.
+- Background Animado: Gerar imagem de tema saúde e aplicar animação Ken Burns (zoom+pan lento) no hero.
+- Imagens IA: Gerar thumbnail exclusiva para cada novo tema.
