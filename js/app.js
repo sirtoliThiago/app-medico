@@ -162,11 +162,32 @@ function renderPlayer(videoId) {
     const vid = db.videos.find(v => v.id === videoId);
     if (!vid) return router.navigate('home');
 
-    const stepsHtml = vid.steps.map(step => `
-        <li class="flex items-start gap-3 py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
-            <span class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">${step}</span>
-        </li>
-    `).join('');
+    // Gera lista de passos com anúncio a cada 3 itens (entre quebras de texto)
+    function buildSteps(steps) {
+        let html = '';
+        steps.forEach((step, i) => {
+            // Detecta se é cabeçalho de seção (começa com emoji de flag/check/aviso)
+            const isHeader = /^[✅⚠️❌💡🌿•]/.test(step);
+            if (isHeader) {
+                html += `
+                    <li class="py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
+                        <span class="text-slate-800 dark:text-slate-200 font-semibold text-sm leading-relaxed">${step}</span>
+                    </li>`;
+            } else {
+                html += `
+                    <li class="flex items-start gap-3 py-2 border-b border-slate-100 dark:border-slate-700 last:border-0">
+                        <span class="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">${step}</span>
+                    </li>`;
+            }
+            // Injeta anúncio após cada 3 itens (exceto no último)
+            if ((i + 1) % 3 === 0 && i < steps.length - 1) {
+                html += `</ul>${adUnit('infeed')}<ul class="list-none">`;
+            }
+        });
+        return html;
+    }
+
+    const stepsHtml = buildSteps(vid.steps);
 
     // Player com fallback automático se o vídeo for bloqueado
     const mediaHtml = `
@@ -228,10 +249,12 @@ function renderPlayer(videoId) {
                 <div class="clean-card p-5 mb-6">
                     <h3 class="font-bold text-slate-800 dark:text-slate-100 mb-3 flex items-center gap-2">
                         <i class="ph-fill ph-list-numbers text-primary text-xl"></i>
-                        Passo a Passo Rápido
+                        Passo a Passo
                     </h3>
                     <ul class="list-none">${stepsHtml}</ul>
                 </div>
+
+                ${adUnit('banner')}
 
                 <div class="p-4 bg-blue-50 dark:bg-slate-800 border border-blue-200 dark:border-slate-700 rounded-xl">
                     <p class="text-xs text-blue-800 dark:text-slate-300 flex items-start gap-2">

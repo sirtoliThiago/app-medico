@@ -72,3 +72,4 @@ crie o planejamento do projeto onde possa ver as funcionalidades em um mapa do s
 - Implementação: Script AdSense no <head>, helper adUnit() no JS, estrutura <ins> responsiva.
 - Publisher ID: ca-pub-XXXXXXXXXXXXXXXX (substituir pelo ID real do AdSense).
 - Auto Ads: Ativado para complementar as posições manuais.
+- Inline nos textos: AdSense In-Feed inserido automaticamente a cada 3 itens da lista de passos nos artigos, criando quebras naturais entre o conteúdo. Títulos de seção (✅⚠️❌💡) recebem estilo negrito diferenciado.
