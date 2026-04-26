@@ -402,6 +402,35 @@ const db = {
                 '4. Se estiver inconsciente: não coloque nada na boca — ligue 192.',
                 '5. Após a crise, ofereça uma refeição leve com carboidratos complexos.'
             ]
+        },
+
+        // ===== CHÁ: BENEFÍCIOS E RISCOS =====
+        {
+            id: 'v23',
+            type: 'video',
+            title: 'Chás Medicinais: Benefícios e Riscos que Você Precisa Conhecer',
+            categoryId: 'medicina-alternativa',
+            image: 'assets/images/cha_ansiedade.png',
+            youtubeId: '9Lfoptrc3N4',
+            views: '1.1M',
+            duration: '7:30',
+            description: 'Os chás medicinais são aliados poderosos da saúde quando usados corretamente. Porém, algumas ervas podem causar efeitos adversos, interagir com medicamentos ou ser contraindicadas em certas condições. Conhecer os benefícios e os riscos é essencial antes de consumir.',
+            steps: [
+                '✅ BENEFÍCIOS — Chás e seus usos:',
+                '• Camomila: calmante, anti-inflamatória, ajuda no sono e na digestão.',
+                '• Hortelã: alivia náuseas, gases, dores de cabeça e melhora o hálito.',
+                '• Gengibre: anti-inflamatório, combate náuseas, melhora circulação.',
+                '• Erva-cidreira: ansiedade, insônia e cólicas intestinais.',
+                '• Boldo: auxilia na digestão e em problemas leves do fígado.',
+                '• Hibisco: antioxidante, auxilia no controle da pressão arterial.',
+                '⚠️ RISCOS E CUIDADOS IMPORTANTES:',
+                '• Grávidas: evite boldo, erva-de-são-joão, carqueja e sene — podem causar contrações.',
+                '• Hipertensos: cuidado com alcaçuz — pode elevar a pressão arterial.',
+                '• Uso de anticoagulantes: gengibre e canela em excesso potencializam o efeito.',
+                '• Não substitua medicamentos prescritos por chás sem orientação médica.',
+                '• Prepare sempre com água fervente e consuma com moderação (2-3 xícaras/dia).',
+                '❌ NUNCA consuma chás de plantas desconhecidas ou sem identificação segura.'
+            ]
         }
     ]
 };
