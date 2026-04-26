@@ -1,0 +1,78 @@
+/* Estilos Customizados - Design Clean, Tranquilo e Dark Mode */
+
+.clean-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #f1f5f9;
+}
+.dark .clean-header {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom: 1px solid #1e293b;
+}
+
+.clean-card {
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.dark .clean-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+.clean-danger {
+    background: #ef4444;
+    box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.39);
+}
+.dark .clean-danger {
+    background: #dc2626;
+    box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.39);
+}
+
+/* Espaço reservado para anúncios (AdSense Placeholder) */
+.ad-placeholder {
+    width: 100%;
+    min-height: 100px;
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 0.875rem;
+    margin: 1.5rem 0;
+}
+.dark .ad-placeholder {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #64748b;
+}
+
+/* Ocultar barra de rolagem mas manter funcionalidade */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Animações de Rota */
+.fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

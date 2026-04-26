@@ -1,0 +1,30 @@
+Tenha como base o projeto cinelivre para o desenvolvimento do projeto AppMedico.
+Esse app deverá ser exclusivo para auxilio medico basicos para pessoas que necessitam de atendimento basico, rápido, onde uma video com dias, poriam auxiliar as pessoas sem condiçõs.
+este projeto será usado no brasil em um app e tambem em um site.
+liste opções de funcionalidades necessárias e organize as funcionalidades em uma lista de prioridades.
+crie o planejamento do projeto onde possa ver as funcionalidades em um mapa do site com todas as telas necessárias para o app e para o site.
+6: traga opções de tecnologias a serem usadas no projeto.
+
+# FASE 2: REDESIGN E MONETIZAÇÃO
+- Design: Modelo mais leve, minimalista e tranquilo, abandonando elementos pesados.
+- Modo Escuro (Dark Mode): Implementar funcionalidade seguindo as configurações do sistema do usuário.
+- Conteúdo: Adicionar mais opções de navegação, misturando vídeos com artigos textuais que contenham fotos próprias geradas.
+- Monetização: Incluir espaços/placeholders mapeados para anúncios do Google AdSense.
+
+# FASE 3: ESTRUTURA VISUAL E CORREÇÕES
+- Imagens em tudo: Todas as opções na lista devem exibir uma foto própria/gerada sobre o assunto como thumbnail, acompanhada do texto explicativo.
+- Experiência do Player: Ao abrir uma opção, o vídeo correspondente deve carregar, acompanhado de um texto explicativo claro abaixo dele.
+- Correção de Links: Atualizar os IDs dos vídeos do YouTube para links ativos e reais, garantindo a reprodução correta.
+
+# FASE 4: EXPANSÃO DE CONTEÚDO
+- Novos Assuntos: Alimentar o aplicativo com novos temas médicos básicos, como Reanimação Cardiopulmonar (RCP), Convulsões, Sangramento Nasal e Tratamento de Cortes para dar mais corpo à plataforma.
+
+# FASE 5: MEDICINA ALTERNATIVA E FEBRE/DOR
+- Correção de Categoria: Mover e adicionar conteúdos específicos para preencher a categoria de "Febre e Dor" (ex: Enxaqueca, Cólicas).
+- Nova Categoria: Criar uma seção de "Medicina Alternativa / Natural" na página inicial.
+- Novos Temas: Adicionar conteúdos e imagens geradas focadas em alívio natural (ex: Chás para ansiedade, Compressas de ervas para dores).
+
+# FASE 6: DEPLOY (HOSPEDAGEM E PWA)
+- Repositório Git: Inicializar o projeto no Git e preparar todos os arquivos gerados.
+- Publicação Pública: Conectar ao repositório remoto criado no GitHub e enviar o código.
+- Configuração do GitHub Pages: Ativar o Pages para gerar a URL pública, permitindo que o AppMedico possa ser acessado e instalado no celular por qualquer pessoa sem nenhum custo.
