@@ -431,7 +431,149 @@ const db = {
                 '• Prepare sempre com água fervente e consuma com moderação (2-3 xícaras/dia).',
                 '❌ NUNCA consuma chás de plantas desconhecidas ou sem identificação segura.'
             ]
+        },
+        {
+            id: 'v24',
+            type: 'video',
+            title: 'Cúrcuma (Açafrão): O Anti-inflamatório Natural mais Poderoso',
+            categoryId: 'medicina-alternativa',
+            image: 'assets/images/compressa_ervas.png',
+            youtubeId: 'PyMq2iDMEkI',
+            views: '2.4M',
+            duration: '5:45',
+            description: 'A cúrcuma contém curcumina, um dos compostos anti-inflamatórios naturais mais estudados pela ciência. Combate inflamações crônicas, melhora a digestão e tem ação antioxidante comprovada.',
+            steps: [
+                '✅ Principais benefícios da cúrcuma:',
+                '• Anti-inflamatório: reduz dores articulares e inflamações crônicas.',
+                '• Antioxidante: neutraliza radicais livres que envelhecem as células.',
+                '• Digestão: estimula a produção de bile e melhora o funcionamento do fígado.',
+                '• Imunidade: fortalece as defesas do organismo.',
+                '💡 Como consumir para melhor absorção:',
+                '• Misture com pimenta-do-reino (aumenta absorção em até 2000%).',
+                '• Adicione a sucos, smoothies, arroz ou sopas.',
+                '• Dose comum: 1/2 a 1 colher de chá por dia.',
+                '⚠️ Cuidados: evite em excesso se tiver cálculos biliares ou usar anticoagulantes.'
+            ]
+        },
+        {
+            id: 'v25',
+            type: 'video',
+            title: 'Própolis: Imunidade, Infecções e Como Usar Corretamente',
+            categoryId: 'medicina-alternativa',
+            image: 'assets/images/cha_ansiedade.png',
+            youtubeId: 'LquiiQVKqKE',
+            views: '1.7M',
+            duration: '4:20',
+            description: 'O própolis é uma resina produzida pelas abelhas com propriedades antibacterianas, antivirais e anti-inflamatórias. É amplamente usado para reforçar a imunidade e tratar infecções leves.',
+            steps: [
+                '✅ Para que serve o própolis:',
+                '• Reforça o sistema imunológico em períodos de gripe e resfriado.',
+                '• Combate infecções bucais: gengivite, aftas e dor de garganta.',
+                '• Ação antifúngica: auxilia em casos de candidíase.',
+                '• Cicatrizante: acelera a recuperação de pequenas feridas.',
+                '💡 Como usar:',
+                '• Extrato alcoólico: 5 a 20 gotas diluídas em água, 2-3x ao dia.',
+                '• Spray bucal: 2-3 aplicações diretas na garganta.',
+                '• Prefira própolis com certificação de qualidade.',
+                '⚠️ Riscos: alérgicos a produtos de abelhas devem evitar. Não use em crianças menores de 1 ano.'
+            ]
+        },
+        {
+            id: 'v26',
+            type: 'video',
+            title: 'Aloe Vera (Babosa): Usos Medicinais e Cuidados',
+            categoryId: 'medicina-alternativa',
+            image: 'assets/images/compressa_ervas.png',
+            youtubeId: 'z8Scj1Rveck',
+            views: '1.3M',
+            duration: '4:55',
+            description: 'A Aloe Vera é uma planta com gel rico em vitaminas, minerais e enzimas. Muito usada para queimaduras, pele irritada e problemas digestivos, mas exige cuidados no uso interno.',
+            steps: [
+                '✅ Usos externos (seguros):',
+                '• Queimaduras de sol: aplique o gel fresco direto na pele, refresca e cicatriza.',
+                '• Irritações e coceiras: alivia inflamações cutâneas e dermatites leves.',
+                '• Hidratação capilar: aplique no couro cabeludo e comprimentos.',
+                '• Acne: o gel tem propriedades antibacterianas e reduz inflamação.',
+                '⚠️ Uso interno — cuidados importantes:',
+                '• O látex (parte amarela entre a casca e o gel) é laxativo forte — EVITE.',
+                '• Grávidas não devem ingerir internamente.',
+                '• Não consuma em excesso: pode causar diarreia e perda de eletrólitos.',
+                '• Sempre remova a casca e o látex antes de usar internamente.'
+            ]
+        },
+        {
+            id: 'v27',
+            type: 'video',
+            title: 'Mel: Remédio Natural para Tosse, Garganta e Imunidade',
+            categoryId: 'medicina-alternativa',
+            image: 'assets/images/cha_ansiedade.png',
+            youtubeId: '8fk2-liGO0A',
+            views: '3.1M',
+            duration: '3:30',
+            description: 'O mel puro é um dos remédios naturais mais antigos e estudados. Possui propriedades antibacterianas, cicatrizantes e é comprovadamente eficaz no alívio da tosse seca.',
+            steps: [
+                '✅ Benefícios comprovados do mel:',
+                '• Tosse seca: 1 colher de mel antes de dormir alivia a irritação na garganta.',
+                '• Dor de garganta: misture mel + limão + gengibre em água morna.',
+                '• Cicatrização: mel puro aplicado em feridas pequenas tem ação antibacteriana.',
+                '• Energia: fonte de carboidratos de rápida absorção para esportistas.',
+                '• Qualidade do sono: mel antes de dormir estimula levemente a serotonina.',
+                '⚠️ Riscos e contraindicações:',
+                '• ❌ NUNCA dê mel a bebês menores de 1 ano — risco de botulismo infantil.',
+                '• Diabéticos devem usar com moderação (eleva glicemia).',
+                '• Prefira sempre mel puro e não industrializado.',
+                '• Consuma no máximo 2 colheres por dia para adultos saudáveis.'
+            ]
+        },
+        {
+            id: 'v28',
+            type: 'video',
+            title: 'Kefir e Kombucha: Probióticos Naturais para o Intestino',
+            categoryId: 'medicina-alternativa',
+            image: 'assets/images/compressa_ervas.png',
+            youtubeId: 'H6r2rz3wvfM',
+            views: '980K',
+            duration: '6:10',
+            description: 'Kefir e Kombucha são bebidas fermentadas ricas em probióticos vivos que equilibram a microbiota intestinal, melhoram a digestão, a imunidade e até o humor.',
+            steps: [
+                '✅ Kefir — o que é e benefícios:',
+                '• Fermentado de leite ou água com colônias de bactérias e leveduras benéficas.',
+                '• Melhora o trânsito intestinal e reduz inchaço e gases.',
+                '• Fortalece o sistema imunológico e reduz inflamações.',
+                '• Como consumir: 100-200ml por dia, preferencialmente em jejum.',
+                '✅ Kombucha — o que é e benefícios:',
+                '• Chá fermentado com colônia de bactérias (SCOBY).',
+                '• Rico em vitaminas do complexo B e antioxidantes.',
+                '• Melhora a digestão e aumenta a energia.',
+                '⚠️ Cuidados:',
+                '• Introduza gradualmente para evitar desconfortos intestinais.',
+                '• Grávidas e imunossuprimidos devem consultar médico antes.'
+            ]
+        },
+        {
+            id: 'v29',
+            type: 'video',
+            title: 'Aromaterapia: Óleos Essenciais para Ansiedade, Dor e Sono',
+            categoryId: 'medicina-alternativa',
+            image: 'assets/images/cha_ansiedade.png',
+            youtubeId: '9Lfoptrc3N4',
+            views: '760K',
+            duration: '5:00',
+            description: 'A aromaterapia usa óleos essenciais extraídos de plantas para promover bem-estar físico e emocional. Lavanda, eucalipto e hortelã são os mais populares e acessíveis.',
+            steps: [
+                '🌿 Principais óleos e seus usos:',
+                '• Lavanda: ansiedade, insônia e dores de cabeça — 2-3 gotas no travesseiro.',
+                '• Eucalipto: desobstrução nasal e gripes — inalação com água quente.',
+                '• Hortelã-pimenta: dor de cabeça — 1 gota nas têmporas (evite os olhos).',
+                '• Laranja doce: mau humor e estresse — difusor por 30 min.',
+                '• Melaleuca (Tea Tree): antisséptico — diluído em água para limpeza de pele.',
+                '💡 Como usar com segurança:',
+                '• Nunca aplique óleos puros diretamente na pele — dilua em óleo carreador (coco, amêndoa).',
+                '• Proporção segura: 2-3 gotas de óleo essencial para 10ml de óleo base.',
+                '⚠️ Grávidas, bebês e animais de estimação têm restrições — consulte um terapeuta.'
+            ]
         }
     ]
 };
+
 
