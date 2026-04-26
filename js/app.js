@@ -280,6 +280,7 @@ function _render(route, param) {
     else if (route === 'player') renderPlayer(param);
     else if (route === 'category') renderCategory(param);
     else renderHome();
+    updateNavActive(route, param);
 }
 
 // Suporte ao botão voltar do celular via hash
@@ -314,18 +315,43 @@ function initDarkMode() {
     }
 }
 
-// --- Navegação Inferior (ativo) ---
+// --- Navegação Inferior (botões por ID) ---
 function initBottomNav() {
-    document.querySelectorAll('.bottom-nav-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const target = btn.dataset.route;
-            if (target === 'home') router.navigate('home');
-            else if (target === 'search') {
-                router.navigate('home');
-                setTimeout(() => document.getElementById('searchInput')?.focus(), 300);
-            }
-        });
+    const navMap = {
+        'nav-home':      () => router.navigate('home'),
+        'nav-search':    () => {
+            router.navigate('home');
+            setTimeout(() => document.getElementById('searchInput')?.focus(), 350);
+        },
+        'nav-socorros':  () => router.navigate('category', 'primeiros-socorros'),
+        'nav-natural':   () => router.navigate('category', 'medicina-alternativa'),
+    };
+
+    Object.entries(navMap).forEach(([id, fn]) => {
+        const btn = document.getElementById(id);
+        if (btn) btn.addEventListener('click', fn);
     });
+}
+
+// Atualiza o botão ativo na nav
+function updateNavActive(route, param) {
+    const activeMap = {
+        'home': 'nav-home',
+        'search': 'nav-search',
+        'category/primeiros-socorros': 'nav-socorros',
+        'category/medicina-alternativa': 'nav-natural',
+    };
+    const key = param ? `${route}/${param}` : route;
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('text-primary');
+        btn.classList.add('text-slate-400', 'dark:text-slate-500');
+    });
+    const activeId = activeMap[key] || 'nav-home';
+    const activeBtn = document.getElementById(activeId);
+    if (activeBtn) {
+        activeBtn.classList.add('text-primary');
+        activeBtn.classList.remove('text-slate-400', 'dark:text-slate-500');
+    }
 }
 
 // --- Inicialização ---

@@ -6,20 +6,18 @@
     <title>AppMedico - Auxílio Médico Básico e Rápido</title>
 
     <!-- SEO e Open Graph -->
-    <meta name="description" content="AppMedico: Primeiros socorros, febre, saúde infantil, medicina natural e muito mais. Informações médicas básicas e gratuitas para todos.">
-    <meta name="keywords" content="primeiros socorros, febre, engasgo, heimlich, saúde, medicina, emergência, brasil">
-    <meta name="author" content="AppMedico">
+    <meta name="description" content="AppMedico: Primeiros socorros, febre, saúde infantil, medicina natural e muito mais.">
+    <meta name="keywords" content="primeiros socorros, febre, engasgo, heimlich, saúde, medicina, emergência">
     <meta property="og:title" content="AppMedico - Auxílio Médico Básico e Rápido">
-    <meta property="og:description" content="Guias práticos de primeiros socorros, febre, saúde infantil e medicina natural. Gratuito e acessível para todos.">
+    <meta property="og:description" content="Guias práticos de primeiros socorros. Gratuito e acessível para todos.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sirtoliThiago.github.io/app-medico/">
-    <meta name="twitter:card" content="summary_large_image">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <!-- Custom Tailwind Config -->
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -29,15 +27,13 @@
                         primary: '#0ea5e9',
                         secondary: '#10b981',
                         danger: '#ef4444',
-                        dark: '#0f172a',
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
@@ -45,76 +41,101 @@
     <meta name="theme-color" content="#0ea5e9">
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="AppMedico">
 </head>
-<body class="text-slate-800 dark:text-slate-100 antialiased min-h-screen flex flex-col transition-colors duration-300">
+<body class="text-slate-800 dark:text-slate-100 antialiased min-h-screen flex flex-col">
 
-    <!-- Orbs de background animados -->
-    <div class="bg-orbs" aria-hidden="true">
-        <div class="bg-orb bg-orb-1"></div>
-        <div class="bg-orb bg-orb-2"></div>
-        <div class="bg-orb bg-orb-3"></div>
-        <div class="bg-orb bg-orb-4"></div>
-    </div>
+    <!-- ===== FUNDO ANIMADO (div dedicado, não body) ===== -->
+    <div id="bg-canvas" aria-hidden="true"></div>
+    <div id="app-overlay" aria-hidden="true"></div>
 
-    <!-- Header -->
-    <header class="clean-header sticky top-0 z-50 px-4 py-3 flex justify-between items-center">
+    <!-- Orbs -->
+    <div class="orb orb-1" aria-hidden="true"></div>
+    <div class="orb orb-2" aria-hidden="true"></div>
+    <div class="orb orb-3" aria-hidden="true"></div>
+    <div class="orb orb-4" aria-hidden="true"></div>
+
+    <!-- Partículas geradas via JS -->
+    <div id="particles-container" aria-hidden="true"></div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="clean-header sticky top-0 px-4 py-3 flex justify-between items-center">
         <div class="flex items-center gap-2 cursor-pointer" onclick="router.navigate('home')">
-            <div class="bg-primary text-white p-2 rounded-xl shadow-md shadow-primary/20">
+            <div class="bg-primary text-white p-2 rounded-xl shadow-lg shadow-primary/30">
                 <i class="ph-fill ph-heartbeat text-2xl"></i>
             </div>
-            <h1 class="text-xl font-bold text-slate-800 dark:text-white tracking-tight">App<span class="text-primary">Medico</span></h1>
+            <h1 class="text-xl font-bold text-slate-800 dark:text-white tracking-tight">
+                App<span class="text-primary">Medico</span>
+            </h1>
         </div>
         <div class="flex items-center gap-3">
-            <button id="darkModeToggle" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors p-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur rounded-full shadow-sm" aria-label="Alternar modo escuro">
-                <i class="ph-fill ph-moon text-xl" id="darkModeIcon"></i>
+            <button id="darkModeToggle"
+                class="p-2 bg-white/60 dark:bg-slate-800/60 backdrop-blur rounded-full shadow-sm hover:text-primary transition-colors"
+                aria-label="Alternar modo escuro">
+                <i class="ph-fill ph-moon text-xl text-slate-500 dark:text-slate-400" id="darkModeIcon"></i>
             </button>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main id="app-content" class="flex-grow w-full max-w-3xl mx-auto pb-20 relative z-10">
+    <!-- ===== MAIN CONTENT ===== -->
+    <main id="app-content" class="flex-grow w-full max-w-3xl mx-auto pb-24 relative" style="z-index:3;">
         <!-- Renderizado via app.js -->
     </main>
 
-    <!-- Barra de Navegação Inferior (padrão app mobile) -->
-    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 flex justify-around items-center py-2 px-4 max-w-3xl mx-auto">
-        <button class="bottom-nav-btn flex flex-col items-center gap-1 text-primary" data-route="home">
+    <!-- ===== BOTTOM NAV ===== -->
+    <nav class="fixed bottom-0 left-0 right-0 flex justify-around items-center py-2 px-2">
+        <button id="nav-home" class="nav-btn flex flex-col items-center gap-1 px-3 py-1 rounded-xl text-primary transition-colors">
             <i class="ph-fill ph-house text-2xl"></i>
-            <span class="text-xs font-medium">Início</span>
+            <span class="text-xs font-semibold">Início</span>
         </button>
-        <button class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" data-route="search">
+        <button id="nav-search" class="nav-btn flex flex-col items-center gap-1 px-3 py-1 rounded-xl text-slate-400 dark:text-slate-500 hover:text-primary transition-colors">
             <i class="ph ph-magnifying-glass text-2xl"></i>
             <span class="text-xs font-medium">Buscar</span>
         </button>
         <a href="tel:192" class="flex flex-col items-center gap-1">
-            <div class="bg-red-500 text-white rounded-full p-3 -mt-6 shadow-lg">
+            <div class="bg-red-500 text-white rounded-full p-3.5 -mt-7 shadow-xl shadow-red-500/40 animate-pulse">
                 <i class="ph-fill ph-phone-call text-2xl"></i>
             </div>
-            <span class="text-xs font-medium text-red-500 mt-1">192</span>
+            <span class="text-xs font-bold text-red-500 mt-1">192</span>
         </a>
-        <button class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" data-route="category/primeiros-socorros">
+        <button id="nav-socorros" class="nav-btn flex flex-col items-center gap-1 px-3 py-1 rounded-xl text-slate-400 dark:text-slate-500 hover:text-primary transition-colors">
             <i class="ph ph-first-aid text-2xl"></i>
             <span class="text-xs font-medium">Socorros</span>
         </button>
-        <button class="bottom-nav-btn flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" data-route="category/medicina-alternativa">
+        <button id="nav-natural" class="nav-btn flex flex-col items-center gap-1 px-3 py-1 rounded-xl text-slate-400 dark:text-slate-500 hover:text-primary transition-colors">
             <i class="ph ph-leaf text-2xl"></i>
             <span class="text-xs font-medium">Natural</span>
         </button>
     </nav>
 
-    <!-- App Scripts -->
+    <!-- Scripts -->
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
 
-    <!-- PWA Service Worker -->
+    <!-- Gerador de partículas e PWA -->
     <script>
+        // Partículas
+        (function() {
+            const container = document.getElementById('particles-container');
+            for (let i = 0; i < 18; i++) {
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    width: ${3 + Math.random() * 5}px;
+                    height: ${3 + Math.random() * 5}px;
+                    animation-duration: ${12 + Math.random() * 16}s;
+                    animation-delay: ${-Math.random() * 20}s;
+                    opacity: ${0.3 + Math.random() * 0.5};
+                `;
+                container.appendChild(p);
+            }
+        })();
+
+        // Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('SW registrado:', reg.scope))
-                    .catch(err => console.error('SW erro:', err));
+                navigator.serviceWorker.register('./sw.js').catch(() => {});
             });
         }
     </script>

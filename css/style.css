@@ -1,304 +1,275 @@
 /* ============================================================
-   AppMedico — Design Calmante: Animações, Background e Glassmorphism
+   AppMedico — Design Calmante v2: Fundo vivo, animações fortes
    ============================================================ */
 
-/* ---- Fontes e Variáveis ---- */
-:root {
-    --primary: #0ea5e9;
-    --primary-light: #bae6fd;
-    --secondary: #10b981;
-    --danger: #ef4444;
-    --calm-1: #dbeafe;   /* azul suave */
-    --calm-2: #d1fae5;   /* verde menta suave */
-    --calm-3: #e0f2fe;   /* céu pastel */
-}
-
-/* ---- Background Global Animado ---- */
-body {
-    background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 50%, #f0f9ff 100%);
+/* ---- Fundo Global Animado (canvas de gradiente) ---- */
+#bg-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 25%, #10b981 50%, #0ea5e9 75%, #818cf8 100%);
     background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    min-height: 100vh;
+    animation: bgShift 12s ease infinite;
 }
 
-.dark body, body.dark {
-    background: linear-gradient(135deg, #0f172a 0%, #0c1a2e 50%, #071e25 100%) !important;
+.dark #bg-canvas {
+    background: linear-gradient(135deg, #0f172a 0%, #0c1a2e 25%, #071e25 50%, #0f172a 75%, #1e1b4b 100%);
+    background-size: 400% 400%;
+    animation: bgShift 12s ease infinite;
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+@keyframes bgShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* ---- Orbs Flutuantes de Background ---- */
-.bg-orbs {
+/* ---- Orbs Flutuantes ---- */
+.orb {
     position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.bg-orb {
-    position: absolute;
     border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.35;
-    animation: floatOrb 20s ease-in-out infinite;
+    filter: blur(70px);
+    animation: floatOrb linear infinite;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.dark .bg-orb { opacity: 0.12; }
-
-.bg-orb-1 {
-    width: 300px; height: 300px;
-    background: radial-gradient(circle, #bae6fd, #7dd3fc);
-    top: -80px; left: -60px;
-    animation-delay: 0s;
+.orb-1 {
+    width: 400px; height: 400px;
+    background: rgba(186, 230, 253, 0.55);
+    top: -100px; left: -100px;
+    animation-duration: 18s;
+}
+.orb-2 {
+    width: 320px; height: 320px;
+    background: rgba(167, 243, 208, 0.50);
+    top: 40%; right: -80px;
+    animation-duration: 22s;
+    animation-delay: -7s;
+}
+.orb-3 {
+    width: 280px; height: 280px;
+    background: rgba(196, 181, 253, 0.45);
+    bottom: 15%; left: 5%;
+    animation-duration: 16s;
+    animation-delay: -12s;
+}
+.orb-4 {
+    width: 220px; height: 220px;
+    background: rgba(253, 230, 138, 0.35);
+    bottom: 5%; right: 10%;
+    animation-duration: 20s;
+    animation-delay: -4s;
 }
 
-.bg-orb-2 {
-    width: 250px; height: 250px;
-    background: radial-gradient(circle, #a7f3d0, #6ee7b7);
-    top: 30%; right: -60px;
-    animation-delay: -5s;
-}
-
-.bg-orb-3 {
-    width: 200px; height: 200px;
-    background: radial-gradient(circle, #c7d2fe, #a5b4fc);
-    bottom: 20%; left: 10%;
-    animation-delay: -10s;
-}
-
-.bg-orb-4 {
-    width: 180px; height: 180px;
-    background: radial-gradient(circle, #fde68a, #fcd34d);
-    bottom: -40px; right: 20%;
-    animation-delay: -15s;
-    opacity: 0.15;
-}
+.dark .orb-1 { background: rgba(30, 58, 138, 0.40); }
+.dark .orb-2 { background: rgba(6, 78, 59, 0.35); }
+.dark .orb-3 { background: rgba(76, 29, 149, 0.35); }
+.dark .orb-4 { background: rgba(120, 53, 15, 0.20); }
 
 @keyframes floatOrb {
-    0%, 100% { transform: translateY(0px) scale(1); }
-    33% { transform: translateY(-30px) scale(1.05); }
-    66% { transform: translateY(20px) scale(0.95); }
+    0%   { transform: translate(0px, 0px) scale(1); }
+    25%  { transform: translate(30px, -40px) scale(1.07); }
+    50%  { transform: translate(-20px, 30px) scale(0.95); }
+    75%  { transform: translate(40px, 20px) scale(1.04); }
+    100% { transform: translate(0px, 0px) scale(1); }
 }
 
-/* ---- Header Clean com Glassmorphism ---- */
+/* ---- Partículas flutuantes ---- */
+.particle {
+    position: fixed;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    pointer-events: none;
+    z-index: 1;
+    animation: particleFloat linear infinite;
+}
+
+.dark .particle { background: rgba(255,255,255,0.15); }
+
+@keyframes particleFloat {
+    0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.8; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* ---- Camada de overlay semi-transparente para legibilidade ---- */
+#app-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: none;
+    pointer-events: none;
+}
+
+.dark #app-overlay {
+    background: rgba(10, 15, 30, 0.55);
+}
+
+/* ---- Header Glassmorphism ---- */
 .clean-header {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 1px 20px rgba(14, 165, 233, 0.08);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.7);
+    box-shadow: 0 2px 24px rgba(14, 165, 233, 0.12);
     position: relative;
     z-index: 50;
 }
-
 .dark .clean-header {
-    background: rgba(15, 23, 42, 0.80);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(15, 23, 42, 0.75);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
-/* ---- Cards com Glassmorphism ---- */
+/* ---- Cards Glassmorphism ---- */
 .clean-card {
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.80);
     border-radius: 1.25rem;
-    box-shadow:
-        0 4px 24px rgba(14, 165, 233, 0.07),
-        0 1px 4px rgba(0,0,0,0.04);
+    box-shadow: 0 8px 32px rgba(14, 165, 233, 0.10), 0 2px 8px rgba(0,0,0,0.05);
     transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s ease;
     position: relative;
-    z-index: 1;
+    z-index: 3;
 }
-
-.clean-card:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow:
-        0 12px 32px rgba(14, 165, 233, 0.14),
-        0 2px 8px rgba(0,0,0,0.06);
+.clean-card:hover, .clean-card:active {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(14, 165, 233, 0.20), 0 4px 12px rgba(0,0,0,0.08);
 }
-
 .dark .clean-card {
-    background: rgba(30, 41, 59, 0.75);
-    border-color: rgba(255,255,255,0.08);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    background: rgba(30, 41, 59, 0.70);
+    border-color: rgba(255,255,255,0.09);
 }
 
-/* ---- Botão de Emergência com Pulsação ---- */
+/* ---- Botão de Emergência ---- */
 .clean-danger {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
-    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.45);
+    background: linear-gradient(135deg, #f87171, #ef4444, #dc2626);
+    box-shadow: 0 6px 24px rgba(239, 68, 68, 0.50);
     position: relative;
     overflow: hidden;
-    z-index: 1;
+    z-index: 3;
+    animation: dangerGlow 2.5s ease-in-out infinite;
 }
 
-.clean-danger::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.12);
-    border-radius: inherit;
-    animation: dangerPulse 2s ease-in-out infinite;
+@keyframes dangerGlow {
+    0%, 100% { box-shadow: 0 6px 24px rgba(239,68,68,0.45); }
+    50%       { box-shadow: 0 6px 40px rgba(239,68,68,0.75), 0 0 0 8px rgba(239,68,68,0.10); }
 }
 
-@keyframes dangerPulse {
-    0%, 100% { opacity: 0; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.04); }
-}
-
-/* ---- Hero Section da Home ---- */
+/* ---- Hero Section ---- */
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 220px;
+    min-height: 240px;
     overflow: hidden;
     border-radius: 0 0 2.5rem 2.5rem;
     margin-bottom: 1.5rem;
+    z-index: 3;
 }
-
 .hero-section img.hero-bg {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0; width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center;
 }
-
 .hero-section .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(14, 165, 233, 0.35) 0%,
-        rgba(16, 185, 129, 0.15) 60%,
-        rgba(240, 249, 255, 0.95) 100%
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(14, 165, 233, 0.50) 0%,
+        rgba(16, 185, 129, 0.25) 50%,
+        rgba(255,255,255,0.90) 100%
     );
 }
-
 .dark .hero-section .hero-overlay {
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.4) 0%,
-        rgba(15, 23, 42, 0.6) 60%,
-        rgba(15, 23, 42, 1) 100%
+    background: linear-gradient(to bottom,
+        rgba(0,0,0,0.50) 0%,
+        rgba(15,23,42,0.70) 60%,
+        rgba(15,23,42,1) 100%
     );
 }
-
 .hero-section .hero-content {
-    position: relative;
-    z-index: 2;
+    position: relative; z-index: 4;
     padding: 2.5rem 1.5rem 1.5rem;
 }
 
-/* ---- Animação de Respiração (Breathe Ring) ---- */
+/* ---- Anel de Respiração ---- */
 .breathe-ring {
-    width: 80px;
-    height: 80px;
+    width: 90px; height: 90px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: breatheScale 4s ease-in-out infinite;
-    box-shadow: 0 0 0 0 rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.18);
+    border: 2px solid rgba(255,255,255,0.40);
+    display: flex; align-items: center; justify-content: center;
+    animation: breatheAnim 4s ease-in-out infinite;
+}
+@keyframes breatheAnim {
+    0%, 100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(255,255,255,0.30); }
+    50%       { transform: scale(1.12); box-shadow: 0 0 0 20px rgba(255,255,255,0); }
 }
 
-@keyframes breatheScale {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255,255,255,0.3);
-    }
-    50% {
-        transform: scale(1.08);
-        box-shadow: 0 0 0 16px rgba(255,255,255,0);
-    }
-}
-
-/* ---- Placeholders de AdSense ---- */
+/* ---- AdSense placeholder ---- */
 .ad-placeholder {
     width: 100%;
     min-height: 80px;
-    background: rgba(255,255,255,0.50);
+    background: rgba(255,255,255,0.45);
     backdrop-filter: blur(8px);
-    border: 1px dashed rgba(14, 165, 233, 0.3);
+    border: 1px dashed rgba(14,165,233,0.35);
     border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #94a3b8;
+    display: flex; align-items: center; justify-content: center;
+    color: #64748b;
     font-size: 0.75rem;
-    margin: 1.5rem 0;
+    margin: 1.25rem 0;
     letter-spacing: 0.05em;
     text-transform: uppercase;
+    position: relative; z-index: 3;
 }
-
 .dark .ad-placeholder {
-    background: rgba(30, 41, 59, 0.5);
-    border-color: rgba(148, 163, 184, 0.2);
+    background: rgba(30,41,59,0.55);
+    border-color: rgba(148,163,184,0.20);
     color: #475569;
 }
 
-/* ---- Ocultar barra de rolagem ---- */
-.hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* ---- Animação de entrada das telas ---- */
+/* ---- Animação de entrada ---- */
 .fade-in {
-    animation: fadeIn 0.4s cubic-bezier(.34,1.2,.64,1) forwards;
+    animation: fadeIn 0.45s cubic-bezier(.34,1.2,.64,1) forwards;
 }
-
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ---- Slide up das categorias ---- */
-.slide-up {
-    animation: slideUp 0.5s cubic-bezier(.34,1.2,.64,1) both;
-}
-
+/* ---- Stagger nas categorias ---- */
+.slide-up { animation: slideUp 0.5s cubic-bezier(.34,1.2,.64,1) both; }
 @keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
-
-/* Delays para stagger das categorias */
-.slide-up:nth-child(1) { animation-delay: 0.05s; }
-.slide-up:nth-child(2) { animation-delay: 0.12s; }
-.slide-up:nth-child(3) { animation-delay: 0.19s; }
-.slide-up:nth-child(4) { animation-delay: 0.26s; }
-.slide-up:nth-child(5) { animation-delay: 0.33s; }
+.slide-up:nth-child(1) { animation-delay: 0.06s; }
+.slide-up:nth-child(2) { animation-delay: 0.13s; }
+.slide-up:nth-child(3) { animation-delay: 0.20s; }
+.slide-up:nth-child(4) { animation-delay: 0.27s; }
+.slide-up:nth-child(5) { animation-delay: 0.34s; }
 
 /* ---- Bottom Nav Glass ---- */
 nav.fixed.bottom-0 {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(255,255,255,0.6);
-    box-shadow: 0 -4px 24px rgba(14, 165, 233, 0.08);
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255,255,255,0.65);
+    box-shadow: 0 -4px 24px rgba(14,165,233,0.10);
     padding-bottom: env(safe-area-inset-bottom, 8px);
+    z-index: 50;
 }
-
 .dark nav.fixed.bottom-0 {
-    background: rgba(15, 23, 42, 0.88);
-    border-top: 1px solid rgba(255,255,255,0.06);
+    background: rgba(15,23,42,0.85);
+    border-top: 1px solid rgba(255,255,255,0.07);
 }
 
-/* ---- Categoria card hover cor ---- */
-.cat-card {
-    transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s ease;
-}
+/* ---- Scrollbar oculta ---- */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-.cat-card:active {
-    transform: scale(0.96);
-}
+/* ---- Transition global ---- */
+* { transition-property: color, background-color, border-color; transition-duration: 0.3s; }
