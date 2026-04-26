@@ -63,3 +63,12 @@ crie o planejamento do projeto onde possa ver as funcionalidades em um mapa do s
 # FASE 12: NOVO TEMA — CHÁ: BENEFÍCIOS E RISCOS
 - Categoria: Medicina Natural (medicina-alternativa).
 - Conteúdo: Guia completo sobre chás medicinais — lista de benefícios por erva (camomila, hortelã, gengibre, erva-cidreira, boldo, hibisco) e alertas de riscos (gravidez, hipertensão, anticoagulantes, interações medicamentosas).
+
+# FASE 13: MONETIZAÇÃO ADSENSE — DOBRA COMPLETA
+- Estratégia: 7 posições de anúncio por tela para maximizar RPM.
+- Home: Banner topo (após hero), In-Feed entre categorias e lista, Banner rodapé.
+- Categoria: Banner topo + In-Feed após 2º artigo.
+- Player/Artigo: Retângulo após o vídeo + Nativo no meio dos passos + Banner rodapé.
+- Implementação: Script AdSense no <head>, helper adUnit() no JS, estrutura <ins> responsiva.
+- Publisher ID: ca-pub-XXXXXXXXXXXXXXXX (substituir pelo ID real do AdSense).
+- Auto Ads: Ativado para complementar as posições manuais.

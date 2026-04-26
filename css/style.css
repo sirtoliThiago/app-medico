@@ -222,7 +222,95 @@
     50%       { transform: scale(1.12); box-shadow: 0 0 0 20px rgba(255,255,255,0); }
 }
 
-/* ---- AdSense placeholder ---- */
+/* ================================================================
+   MONETIZAÇÃO ADSENSE — Estilos dos blocos de anúncio
+   ================================================================ */
+
+/* Container base para todos os anúncios */
+.ad-wrap {
+    position: relative;
+    z-index: 3;
+    margin: 1.25rem 0;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+/* Rótulo discreto "Publicidade" acima do anúncio */
+.ad-wrap::before {
+    content: 'Publicidade';
+    display: block;
+    text-align: center;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 4px;
+}
+
+/* Banner horizontal (topo e rodapé) */
+.ad-banner {
+    min-height: 90px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(14,165,233,0.12);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dark .ad-banner {
+    background: rgba(30,41,59,0.55);
+    border-color: rgba(148,163,184,0.12);
+}
+
+/* In-Feed (entre conteúdos) — aparência de card nativo */
+.ad-infeed {
+    min-height: 120px;
+    background: rgba(255,255,255,0.50);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(14,165,233,0.10);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+.dark .ad-infeed {
+    background: rgba(30,41,59,0.50);
+    border-color: rgba(148,163,184,0.10);
+}
+
+/* Retângulo no player (após o vídeo) */
+.ad-player {
+    min-height: 250px;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(14,165,233,0.12);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dark .ad-player {
+    background: rgba(30,41,59,0.55);
+    border-color: rgba(148,163,184,0.12);
+}
+
+/* Placeholder visual para quando o AdSense ainda não está aprovado */
+.ad-placeholder-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: #94a3b8;
+    font-size: 0.75rem;
+    text-align: center;
+    padding: 1rem;
+}
+.ad-placeholder-text i { font-size: 1.5rem; opacity: 0.5; }
+
+/* Antigo .ad-placeholder mantido por compatibilidade */
 .ad-placeholder {
     width: 100%;
     min-height: 80px;
@@ -230,13 +318,16 @@
     backdrop-filter: blur(8px);
     border: 1px dashed rgba(14,165,233,0.35);
     border-radius: 1rem;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #64748b;
     font-size: 0.75rem;
     margin: 1.25rem 0;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    position: relative; z-index: 3;
+    position: relative;
+    z-index: 3;
 }
 .dark .ad-placeholder {
     background: rgba(30,41,59,0.55);

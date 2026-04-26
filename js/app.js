@@ -1,6 +1,35 @@
-// AppMedico - Lógica Principal e Roteamento Vanilla JS
+// ================================================================
+// HELPER DE ANÚNCIOS ADSENSE
+// Substitua os data-ad-slot pelos IDs reais criados no painel AdSense
+// Publisher ID: altere "ca-pub-XXXXXXXXXXXXXXXX" no index.html
+// ================================================================
+function adUnit(type = 'banner') {
+    const slots = {
+        banner:  '1111111111',  // ← substitua pelo slot real "appmedico-banner"
+        infeed:  '2222222222',  // ← substitua pelo slot real "appmedico-infeed"
+        player:  '3333333333',  // ← substitua pelo slot real "appmedico-player"
+    };
+    const classes = {
+        banner: 'ad-banner',
+        infeed: 'ad-infeed',
+        player: 'ad-player',
+    };
+    return `
+        <div class="ad-wrap px-4">
+            <ins class="adsbygoogle ${classes[type]}"
+                style="display:block; width:100%;"
+                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-slot="${slots[type]}"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>
+        </div>`;
+}
+
+// ================================================================
 
 const appContent = document.getElementById('app-content');
+
 
 // --- Helpers ---
 function cardHtml(vid) {
@@ -88,15 +117,15 @@ function renderHome() {
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">${categoriesHtml}</div>
                 </div>
 
-                <div class="px-4">
-                    <div class="ad-placeholder">📢 Espaço para Anúncio</div>
-                </div>
+                ${adUnit('banner')}
 
                 <!-- Todos os conteúdos -->
-                <div class="mt-4 px-4">
+                <div class="mt-2 px-4">
                     <h2 class="text-base font-bold text-slate-600 dark:text-slate-400 uppercase tracking-widest mb-4">Todos os Conteúdos</h2>
-                    <div>${allItemsHtml}</div>
+                    <div id="all-items-list">${allItemsHtml}</div>
                 </div>
+
+                ${adUnit('banner')}
             </div>
         </div>
     `;
@@ -194,7 +223,7 @@ function renderPlayer(videoId) {
             </div>
 
             <div class="px-4 mt-4">
-                <div class="ad-placeholder !min-h-[50px] !my-0 mb-4">Anúncio (AdSense)</div>
+                ${adUnit('player')}
 
                 <div class="clean-card p-5 mb-6">
                     <h3 class="font-bold text-slate-800 dark:text-slate-100 mb-3 flex items-center gap-2">
@@ -257,8 +286,9 @@ function renderCategory(categoryId) {
                     <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">${catVideos.length} conteúdos disponíveis</p>
                 </div>
             </div>
+            ${adUnit('banner')}
             <div class="px-4">${itemsHtml}</div>
-            <div class="px-4"><div class="ad-placeholder mt-4">Espaço de Anúncio</div></div>
+            ${adUnit('infeed')}
         </div>
     `;
     window.scrollTo(0, 0);
