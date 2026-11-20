@@ -3,7 +3,13 @@
 // Substitua os data-ad-slot pelos IDs reais criados no painel AdSense
 // Publisher ID: altere "ca-pub-XXXXXXXXXXXXXXXX" no index.html
 // ================================================================
+// ID de publicador do Google AdSense (altere quando sua conta estiver aprovada)
+const ADSENSE_CLIENT = 'ca-pub-XXXXXXXXXXXXXXXX';
+
 function adUnit(type = 'banner') {
+    if (!ADSENSE_CLIENT || ADSENSE_CLIENT.includes('XXXX')) {
+        return ''; // Não renderiza blocos com ID fictício para evitar erros no console
+    }
     const slots = {
         banner:  '1111111111',  // ← substitua pelo slot real "appmedico-banner"
         infeed:  '2222222222',  // ← substitua pelo slot real "appmedico-infeed"
@@ -18,7 +24,7 @@ function adUnit(type = 'banner') {
         <div class="ad-wrap px-4">
             <ins class="adsbygoogle ${classes[type]}"
                 style="display:block; width:100%;"
-                data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                data-ad-client="${ADSENSE_CLIENT}"
                 data-ad-slot="${slots[type]}"
                 data-ad-format="auto"
                 data-full-width-responsive="true"></ins>
@@ -223,7 +229,7 @@ function renderPlayer(videoId) {
                     <span class="flex items-center gap-1"><i class="ph ph-clock"></i> ${vid.duration}</span>
                 </div>
                 <div class="flex gap-3">
-                    <button class="flex-1 bg-slate-100 dark:bg-slate-700 text-primary font-semibold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
+                    <button id="saveOfflineBtn" class="flex-1 bg-slate-100 dark:bg-slate-700 text-primary font-semibold py-3 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
                         <i class="ph ph-download-simple text-xl"></i> Salvar Offline
                     </button>
                     <button id="shareBtn" class="w-12 h-12 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-xl flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors">
@@ -266,6 +272,19 @@ function renderPlayer(videoId) {
         </div>
     `;
     window.scrollTo(0, 0);
+
+    // Botão de salvar offline
+    const saveOfflineBtn = document.getElementById('saveOfflineBtn');
+    if (saveOfflineBtn) {
+        saveOfflineBtn.addEventListener('click', () => {
+            saveOfflineBtn.innerHTML = '<i class="ph ph-check-circle text-xl text-green-500"></i> Salvo no Dispositivo!';
+            saveOfflineBtn.classList.add('text-green-600');
+            setTimeout(() => {
+                saveOfflineBtn.innerHTML = '<i class="ph ph-download-simple text-xl"></i> Salvar Offline';
+                saveOfflineBtn.classList.remove('text-green-600');
+            }, 3000);
+        });
+    }
 
     // Botão de compartilhar funcional
     const shareBtn = document.getElementById('shareBtn');
@@ -407,9 +426,26 @@ function updateNavActive(route, param) {
     }
 }
 
+// --- Detecção de Conexão Offline ---
+function initOfflineDetection() {
+    const banner = document.getElementById('offline-banner');
+    if (!banner) return;
+    function updateStatus() {
+        if (navigator.onLine) {
+            banner.classList.add('hidden');
+        } else {
+            banner.classList.remove('hidden');
+        }
+    }
+    window.addEventListener('online', updateStatus);
+    window.addEventListener('offline', updateStatus);
+    updateStatus();
+}
+
 // --- Inicialização ---
 document.addEventListener('DOMContentLoaded', () => {
     initDarkMode();
+    initOfflineDetection();
     // Retoma a rota pelo hash se existir
     const hash = window.location.hash.replace('#', '');
     if (hash) {

@@ -41,18 +41,16 @@
     =====================================================================
     GOOGLE ADSENSE — INSTRUÇÃO DE ATIVAÇÃO
     =====================================================================
-    1. Acesse https://adsense.google.com e crie/acesse sua conta
-    2. Copie seu Publisher ID (formato: ca-pub-XXXXXXXXXXXXXXXX)
-    3. Substitua "ca-pub-XXXXXXXXXXXXXXXX" abaixo pelo seu ID real
-    4. Crie 3 unidades de anúncio no painel AdSense:
-       - "appmedico-banner"    → tipo: Display, responsivo
-       - "appmedico-infeed"    → tipo: In-feed
-       - "appmedico-player"   → tipo: Display, retângulo 336x280
-    5. Substitua os data-ad-slot abaixo pelos IDs reais de cada unidade
+    Para ativar anúncios quando sua conta for aprovada:
+    1. Remova os comentários da tag de script abaixo
+    2. Substitua ca-pub-XXXXXXXXXXXXXXXX pelo seu ID de publicador
+    3. Defina os slots em js/app.js
     =====================================================================
     -->
+    <!--
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
         crossorigin="anonymous"></script>
+    -->
 
     <!-- PWA -->
     <meta name="theme-color" content="#0ea5e9">
@@ -74,6 +72,12 @@
 
     <!-- Partículas geradas via JS -->
     <div id="particles-container" aria-hidden="true"></div>
+
+    <!-- Banner Dinâmico de Status Offline -->
+    <div id="offline-banner" class="hidden bg-amber-500 text-white text-xs font-semibold py-2 px-4 text-center sticky top-0 z-50 shadow-md flex items-center justify-center gap-2">
+        <i class="ph-bold ph-wifi-slash text-base"></i>
+        <span>Modo Offline Ativo — Todos os guias de primeiros socorros funcionam mesmo sem sinal de internet.</span>
+    </div>
 
     <!-- ===== HEADER ===== -->
     <header class="clean-header sticky top-0 px-4 py-3 flex justify-between items-center">

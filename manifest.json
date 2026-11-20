@@ -1,7 +1,7 @@
 {
-  "name": "AppMedico",
+  "name": "AppMedico - Auxílio Médico Básico",
   "short_name": "AppMedico",
-  "description": "Plataforma de Auxílio Médico Básico e Rápido",
+  "description": "Plataforma de Primeiros Socorros e Auxílio Médico Básico e Rápido",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f172a",
@@ -9,7 +9,7 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2966/2966327.png",
+      "src": "assets/images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
